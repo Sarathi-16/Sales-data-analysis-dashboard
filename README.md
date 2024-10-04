@@ -1,6 +1,10 @@
 # Sales-data-analysis-dashboard
 
-### Data Analysis Using SQL
+First we will check and deal with any missing values.
+Then we will import the SQL database to Power Bi to create a dashboard.
+There we will add different, required visualizations in the dashboard. 
+
+### Data Analysis Using SQL(SQL Query)
 
 Show all customer records
 
@@ -38,3 +42,16 @@ Show total revenue in year 2020 in Chennai
 
     `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020
     and transactions.market_code="Mark001";`
+
+___________________________
+___________________________
+
+Done in the transform data option in Power Bi
+
+Data Analysis Using Power BI
+
+1. For the sales transaction table:
+Formula to create norm_amount column
+
+`= Table.AddColumn(#"Filtered Rows", "norm_amount", each if [currency] = "USD" or [currency] ="USD#(cr)" then [sales_amount]*75 else [sales_amount], type any)`
+
